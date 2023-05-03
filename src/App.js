@@ -8,7 +8,9 @@ const App = () => {
       <h3>Products:</h3>
       <Products name="Cake" price="65" />
       <Products name="Coffee" price="78" />
-      <Products name="Tea" price="47"></Products>
+      <Products name="Tea" price="47">
+        Availibility: Available
+      </Products>
     </div>
   );
 };
