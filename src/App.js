@@ -1,6 +1,7 @@
 import React from "react";
 import Products from "./components/Products/Products";
 import { useState } from "react";
+import "./App.css";
 
 const App = (props) => {
   const [productState, setProductState] = useState({
