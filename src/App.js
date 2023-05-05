@@ -1,6 +1,6 @@
 import React from "react";
 import Products from "./components/Products/Products";
-import { useState } from "react";
+// import { useState } from "react";
 import "./App.css";
 
 // const App = (props) => {
@@ -52,7 +52,7 @@ class App extends React.Component {
     ],
   };
 
-  changePriceHandler = (newName, tata) => {
+  changePriceHandler = (newName) => {
     this.setState({
       Products: [
         { name: newName, price: 70 },
@@ -62,6 +62,15 @@ class App extends React.Component {
     });
   };
 
+  changeNameHandler = (event) => {
+    this.setState({
+      Products: [
+        { name: "Tea & Cake", price: 70 },
+        { name: event.target.value, price: 70 },
+        { name: "Milk & Cake", price: 70 },
+      ],
+    });
+  };
   render() {
     return (
       <div id="main" className="container">
@@ -74,6 +83,7 @@ class App extends React.Component {
         <Products
           name={this.state.Products[1].name}
           price={this.state.Products[1].price}
+          change={this.changeNameHandler}
         />
         <Products
           name={this.state.Products[2].name}
