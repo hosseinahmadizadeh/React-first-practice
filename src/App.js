@@ -27,29 +27,35 @@ class App extends React.Component {
       padding: "0.6rem",
       margin: "0.6rem auto",
     };
+
+    let products = null;
+    if (this.state.showProducts) {
+      products = (
+        <div>
+          <Products
+            name={this.state.Products[0].name}
+            price={this.state.Products[0].price}
+          />
+          <Products
+            name={this.state.Products[1].name}
+            price={this.state.Products[1].price}
+          />
+          <Products
+            name={this.state.Products[2].name}
+            price={this.state.Products[2].price}
+          />
+        </div>
+      );
+    }
+
     return (
       <div id="main" className="container">
         <h2>React App</h2>
         <h3>Products:</h3>
-        {this.state.showProducts ? (
-          <div>
-            <Products
-              name={this.state.Products[0].name}
-              price={this.state.Products[0].price}
-            />
-            <Products
-              name={this.state.Products[1].name}
-              price={this.state.Products[1].price}
-            />
-            <Products
-              name={this.state.Products[2].name}
-              price={this.state.Products[2].price}
-            />
-          </div>
-        ) : null}
         <button style={btn} onClick={this.toggleProductsHandler}>
           Show/Hide Products
         </button>
+        {products}
       </div>
     );
   }
