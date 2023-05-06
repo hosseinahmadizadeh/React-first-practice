@@ -5,7 +5,7 @@ import "./App.css";
 
 class App extends React.Component {
   state = {
-    Products: [
+    products: [
       { name: "Tea & Cake", price: "79" },
       { name: "Coffee & Cake", price: "99" },
       { name: "Milk & Cake", price: "88" },
@@ -32,25 +32,16 @@ class App extends React.Component {
     if (this.state.showProducts) {
       products = (
         <div>
-          <Products
-            name={this.state.Products[0].name}
-            price={this.state.Products[0].price}
-          />
-          <Products
-            name={this.state.Products[1].name}
-            price={this.state.Products[1].price}
-          />
-          <Products
-            name={this.state.Products[2].name}
-            price={this.state.Products[2].price}
-          />
+          {this.state.products.map((item) => {
+            return <Products name={item.name} price={item.price} />;
+          })}
         </div>
       );
     }
 
     return (
       <div id="main" className="container">
-        <h2>React App</h2>
+        <h2>Cafe</h2>
         <h3>Products:</h3>
         <button style={btn} onClick={this.toggleProductsHandler}>
           Show/Hide Products
