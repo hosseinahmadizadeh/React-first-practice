@@ -3,6 +3,60 @@ import Products from "./components/Products/Products";
 // import { useState } from "react";
 import "./App.css";
 
+class App extends React.Component {
+  state = {
+    Products: [
+      { name: "Tea & Cake", price: "79" },
+      { name: "Coffee & Cake", price: "99" },
+      { name: "Milk & Cake", price: "88" },
+    ],
+    showProducts: false,
+  };
+  toggleProductsHandler = () => {
+    const show = this.state.showProducts;
+    this.setState({ showProducts: !show });
+  };
+  render() {
+    const btn = {
+      backgroundColor: "#7b1fa2",
+      color: "#ffffff",
+      font: "inherit",
+      border: "none",
+      outline: "none",
+      borderRadius: "3px",
+      padding: "0.6rem",
+      margin: "0.6rem auto",
+    };
+    return (
+      <div id="main" className="container">
+        <h2>React App</h2>
+        <h3>Products:</h3>
+        {this.state.showProducts ? (
+          <div>
+            <Products
+              name={this.state.Products[0].name}
+              price={this.state.Products[0].price}
+            />
+            <Products
+              name={this.state.Products[1].name}
+              price={this.state.Products[1].price}
+            />
+            <Products
+              name={this.state.Products[2].name}
+              price={this.state.Products[2].price}
+            />
+          </div>
+        ) : null}
+        <button style={btn} onClick={this.toggleProductsHandler}>
+          Show/Hide Products
+        </button>
+      </div>
+    );
+  }
+}
+
+export default App;
+
 // const App = (props) => {
 //   const [productState, setProductState] = useState({
 //     Products: [
@@ -42,70 +96,3 @@ import "./App.css";
 //     </div>
 //   );
 // };
-
-class App extends React.Component {
-  state = {
-    Products: [
-      { name: "Tea & Cake", price: "79" },
-      { name: "Coffee & Cake", price: "99" },
-      { name: "Milk & Cake", price: "88" },
-    ],
-  };
-
-  changePriceHandler = (newName) => {
-    this.setState({
-      Products: [
-        { name: newName, price: 70 },
-        { name: "Coffee & Cake", price: 70 },
-        { name: "Milk & Cake", price: 70 },
-      ],
-    });
-  };
-
-  changeNameHandler = (event) => {
-    this.setState({
-      Products: [
-        { name: "Tea & Cake", price: 70 },
-        { name: event.target.value, price: 70 },
-        { name: "Milk & Cake", price: 70 },
-      ],
-    });
-  };
-  render() {
-    const btn = {
-      backgroundColor: "#7b1fa2",
-      color: "#ffffff",
-      font: "inherit",
-      border: "none",
-      outline: "none",
-      borderRadius: "3px",
-      padding: "0.6rem",
-      margin: "0.6rem auto",
-    };
-    return (
-      <div id="main" className="container">
-        <h2>React App</h2>
-        <h3>Products:</h3>
-        <Products
-          name={this.state.Products[0].name}
-          price={this.state.Products[0].price}
-        />
-        <Products
-          name={this.state.Products[1].name}
-          price={this.state.Products[1].price}
-          change={this.changeNameHandler}
-        />
-        <Products
-          name={this.state.Products[2].name}
-          price={this.state.Products[2].price}
-          click={() => this.changePriceHandler("Cookie")}
-        />
-        <button style={btn} onClick={this.changePriceHandler}>
-          Change Price
-        </button>
-      </div>
-    );
-  }
-}
-
-export default App;
