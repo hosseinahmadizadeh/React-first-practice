@@ -6,9 +6,9 @@ import "./App.css";
 class App extends React.Component {
   state = {
     products: [
-      { name: "Tea & Cake", price: "79" },
-      { name: "Coffee & Cake", price: "99" },
-      { name: "Milk & Cake", price: "88" },
+      { id: 1, name: "Tea & Cake", price: "79" },
+      { id: 2, name: "Coffee & Cake", price: "99" },
+      { id: 3, name: "Milk & Cake", price: "88" },
     ],
     showProducts: false,
   };
@@ -46,6 +46,7 @@ class App extends React.Component {
                 click={() => this.deleteProductHandler(index)}
                 name={item.name}
                 price={item.price}
+                key={item.id}
               />
             );
           })}
