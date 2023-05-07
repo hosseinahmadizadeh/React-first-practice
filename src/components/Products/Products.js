@@ -8,7 +8,7 @@ const Products = (props) => {
         Product Name: {props.name}
       </p>
       <p className="product-price">Product Price: {props.price}</p>
-      <input type="text" onChange={props.change} />
+      <input type="text" onChange={props.change} value={props.name} />
     </div>
   );
 };

@@ -24,6 +24,23 @@ class App extends React.Component {
     this.setState({ products: products });
   };
 
+  changeNameHandler = (event, id) => {
+    const productIndex = this.state.products.findIndex((item) => {
+      return item.id === id;
+    });
+
+    const product = {
+      ...this.state.products[productIndex],
+    };
+
+    product.name = event.target.value;
+
+    const products = [...this.state.products];
+    products[productIndex] = product;
+
+    this.setState({ products: products });
+  };
+
   render() {
     const btn = {
       backgroundColor: "#7b1fa2",
@@ -47,6 +64,7 @@ class App extends React.Component {
                 name={item.name}
                 price={item.price}
                 key={item.id}
+                change={(event) => this.changeNameHandler(event, item.id)}
               />
             );
           })}
