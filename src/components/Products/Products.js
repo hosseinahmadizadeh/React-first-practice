@@ -2,6 +2,8 @@ import React from "react";
 import "./Products.css";
 
 const Products = (props) => {
+  console.log("Products");
+
   return (
     <div className="product-info">
       <p className="product-name" onClick={props.click}>

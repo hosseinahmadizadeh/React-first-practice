@@ -2,6 +2,8 @@ import React from "react";
 import Products from "../Products/Products";
 
 const ProductsList = (props) => {
+  console.log("ProductList");
+
   return props.products.map((item, index) => {
     return (
       <Products

@@ -4,6 +4,11 @@ import Main from "./components/Main/Main";
 import "./App.css";
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    console.log("App.js constructor");
+  }
+
   state = {
     products: [
       { id: 1, name: "Tea & Cake", price: "79" },
@@ -12,6 +17,10 @@ class App extends React.Component {
     ],
     showProducts: false,
   };
+
+  componentDidMount() {
+    console.log("App.js componentDidMount");
+  }
 
   toggleProductsHandler = () => {
     const show = this.state.showProducts;
@@ -42,6 +51,8 @@ class App extends React.Component {
   };
 
   render() {
+    console.log("App.js render");
+
     let products = null;
     if (this.state.showProducts) {
       products = (
