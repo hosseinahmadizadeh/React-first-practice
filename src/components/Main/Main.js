@@ -6,7 +6,7 @@ const Main = (props) => {
     setTimeout(() => {
       alert("Http Request");
     }, 2000);
-  }, [props.products]);
+  }, []);
 
   const btn = {
     backgroundColor: "#7b1fa2",
