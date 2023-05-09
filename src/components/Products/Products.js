@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import "./Products.css";
 import "../../HOCs/Container";
-import Container from "../../HOCs/Container";
+// import Container from "../../HOCs/Container";
+
 class Products extends Component {
   render() {
     console.log("Products");
     return (
-      <Container>
+      <React.Fragment>
         <p key="1" className="product-name" onClick={this.props.click}>
           Product Name: {this.props.name}
         </p>
@@ -19,7 +20,7 @@ class Products extends Component {
           onChange={this.props.change}
           value={this.props.name}
         />
-      </Container>
+      </React.Fragment>
     );
   }
 }
