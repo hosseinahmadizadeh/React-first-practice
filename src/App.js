@@ -77,7 +77,10 @@ class App extends React.Component {
 
     return (
       <div id="main" className="container">
-        <Main click={this.toggleProductsHandler} />
+        <Main
+          products={this.state.products}
+          click={this.toggleProductsHandler}
+        />
         {products}
       </div>
     );
