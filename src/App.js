@@ -16,6 +16,7 @@ class App extends React.Component {
       { id: 3, name: "Milk & Cake", price: "88" },
     ],
     showProducts: false,
+    showMain: true,
   };
 
   componentDidMount() {
@@ -29,6 +30,10 @@ class App extends React.Component {
 
   componentDidUpdate() {
     console.log("App.js componentDidUpdate");
+  }
+
+  componentWillUnmount() {
+    console.log("App.js componentWillUnmount");
   }
 
   toggleProductsHandler = () => {
@@ -77,10 +82,19 @@ class App extends React.Component {
 
     return (
       <div id="main" className="container">
-        <Main
-          products={this.state.products}
-          click={this.toggleProductsHandler}
-        />
+        <button
+          onClick={() => {
+            this.setState({ showMain: false });
+          }}
+        >
+          Remove Main
+        </button>
+        {this.state.showMain ? (
+          <Main
+            products={this.state.products}
+            click={this.toggleProductsHandler}
+          />
+        ) : null}
         {products}
       </div>
     );
