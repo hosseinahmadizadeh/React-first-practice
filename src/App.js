@@ -1,6 +1,9 @@
 import React from "react";
+
 import ProductsList from "./components/ProductsList/ProductsList";
 import Main from "./components/Main/Main";
+import Wrapper from "./HOCs/Wrapper";
+
 import "./App.css";
 
 class App extends React.Component {
@@ -81,7 +84,7 @@ class App extends React.Component {
     }
 
     return (
-      <div id="main" className="container">
+      <Wrapper center="center">
         <button
           onClick={() => {
             this.setState({ showMain: false });
@@ -96,7 +99,7 @@ class App extends React.Component {
           />
         ) : null}
         {products}
-      </div>
+      </Wrapper>
     );
   }
 }

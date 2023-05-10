@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./Products.css";
 import "../../HOCs/Container";
-// import Container from "../../HOCs/Container";
 
 class Products extends Component {
   render() {
