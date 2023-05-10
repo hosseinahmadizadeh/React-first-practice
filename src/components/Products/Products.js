@@ -3,8 +3,12 @@ import "./Products.css";
 import Wrapper from "../../HOCs/Wrapper";
 
 class Products extends Component {
+  constructor(props) {
+    super(props);
+    this.inputRef = React.createRef();
+  }
   componentDidMount() {
-    this.inputElement.focus();
+    this.inputRef.current.focus();
   }
   render() {
     console.log("Products");
@@ -17,7 +21,7 @@ class Products extends Component {
           Product Price: {this.props.price}
         </p>
         <input
-          ref={(element) => (this.inputElement = element)}
+          ref={this.inputRef}
           key="3"
           type="text"
           onChange={this.props.change}
