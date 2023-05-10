@@ -3,6 +3,9 @@ import "./Products.css";
 import Wrapper from "../../HOCs/Wrapper";
 
 class Products extends Component {
+  componentDidMount() {
+    this.inputElement.focus();
+  }
   render() {
     console.log("Products");
     return (
@@ -14,6 +17,7 @@ class Products extends Component {
           Product Price: {this.props.price}
         </p>
         <input
+          ref={(element) => (this.inputElement = element)}
           key="3"
           type="text"
           onChange={this.props.change}
