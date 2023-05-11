@@ -8,6 +8,8 @@ class Products extends Component {
     super(props);
     this.inputRef = React.createRef();
   }
+  static contextType = AuthContext;
+
   componentDidMount() {
     this.inputRef.current.focus();
   }
@@ -15,11 +17,7 @@ class Products extends Component {
     console.log("Products");
     return (
       <React.Fragment>
-        <AuthContext.Consumer>
-          {(context) =>
-            context.auth ? <p>Logged in!</p> : <p>Please Login!</p>
-          }
-        </AuthContext.Consumer>
+        {this.context.auth ? <p>Logged in!</p> : <p>Please Login!</p>}
         <p key="1" className="product-name" onClick={this.props.click}>
           Product Name: {this.props.name}
         </p>
