@@ -14,6 +14,7 @@ class Products extends Component {
     console.log("Products");
     return (
       <React.Fragment>
+        {this.props.isAuth ? <p>Logged in!</p> : <p>Please Login!</p>}
         <p key="1" className="product-name" onClick={this.props.click}>
           Product Name: {this.props.name}
         </p>

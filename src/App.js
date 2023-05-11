@@ -21,6 +21,7 @@ class App extends React.Component {
     ],
     showProducts: false,
     showMain: true,
+    auth: false,
   };
 
   componentDidMount() {
@@ -40,17 +41,6 @@ class App extends React.Component {
     console.log("App.js componentWillUnmount");
   }
 
-  toggleProductsHandler = () => {
-    const show = this.state.showProducts;
-    this.setState({ showProducts: !show });
-  };
-
-  deleteProductHandler = (productIndex) => {
-    const products = [...this.state.products];
-    products.splice(productIndex, 1);
-    this.setState({ products: products });
-  };
-
   changeNameHandler = (event, id) => {
     const productIndex = this.state.products.findIndex((item) => {
       return item.id === id;
@@ -68,6 +58,21 @@ class App extends React.Component {
     this.setState({ products: products });
   };
 
+  toggleProductsHandler = () => {
+    const show = this.state.showProducts;
+    this.setState({ showProducts: !show });
+  };
+
+  deleteProductHandler = (productIndex) => {
+    const products = [...this.state.products];
+    products.splice(productIndex, 1);
+    this.setState({ products: products });
+  };
+
+  loginHandler = () => {
+    this.setState({ auth: true });
+  };
+
   render() {
     console.log("App.js render");
 
@@ -79,6 +84,7 @@ class App extends React.Component {
             products={this.state.products}
             click={this.deleteProductHandler}
             change={this.changeNameHandler}
+            isAuth={this.state.auth}
           />
         </div>
       );
@@ -97,6 +103,7 @@ class App extends React.Component {
           <Main
             products={this.state.products}
             click={this.toggleProductsHandler}
+            login={this.loginHandler}
           />
         ) : null}
         {products}
