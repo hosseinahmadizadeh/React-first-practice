@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import AuthContext from "../../context/auth-context";
 
 const Main = (props) => {
   const btnRef = useRef(null);
@@ -28,7 +29,9 @@ const Main = (props) => {
       <button ref={btnRef} style={btn} onClick={props.click}>
         Show/Hide Products
       </button>
-      <button onClick={props.login}>Login</button>
+      <AuthContext.Consumer>
+        {(context) => <button onClick={context.login}>Login</button>}
+      </AuthContext.Consumer>
     </div>
   );
 };

@@ -2,8 +2,9 @@ import React from "react";
 
 import ProductsList from "./components/ProductsList/ProductsList";
 import Main from "./components/Main/Main";
-import Wrapper from "./HOCs/Wrapper";
-import Container from "./HOCs/Container";
+import Wrapper from "./hoc/Wrapper";
+import Container from "./hoc/Container";
+import AuthContext from "../src/context/auth-context";
 
 import "./App.css";
 
@@ -21,7 +22,7 @@ class App extends React.Component {
     ],
     showProducts: false,
     showMain: true,
-    auth: false,
+    auth: false, //added
   };
 
   componentDidMount() {
@@ -71,7 +72,7 @@ class App extends React.Component {
 
   loginHandler = () => {
     this.setState({ auth: true });
-  };
+  }; //added
 
   render() {
     console.log("App.js render");
@@ -99,14 +100,17 @@ class App extends React.Component {
         >
           Remove Main
         </button>
-        {this.state.showMain ? (
-          <Main
-            products={this.state.products}
-            click={this.toggleProductsHandler}
-            login={this.loginHandler}
-          />
-        ) : null}
-        {products}
+        <AuthContext.Provider
+          value={{ auth: this.state.auth, login: this.loginHandler }}
+        >
+          {this.state.showMain ? (
+            <Main
+              products={this.state.products}
+              click={this.toggleProductsHandler}
+            />
+          ) : null}
+          {products}
+        </AuthContext.Provider>
       </Container>
     );
   }

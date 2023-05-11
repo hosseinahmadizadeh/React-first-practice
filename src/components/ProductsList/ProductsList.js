@@ -24,7 +24,6 @@ class ProductsList extends Component {
           price={item.price}
           key={item.id}
           change={(event) => this.props.change(event, item.id)}
-          isAuth={this.props.isAuth}
         />
       );
     });
