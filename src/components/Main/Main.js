@@ -1,11 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 
 const Main = (props) => {
+  const btnRef = useRef(null);
   useEffect(() => {
     console.log("Main.js useEffect");
-    setTimeout(() => {
-      alert("Http Request");
-    }, 2000);
+    btnRef.current.click();
     return () => {
       console.log("Main.js cleanup");
     };
@@ -26,7 +25,7 @@ const Main = (props) => {
     <div>
       <h2>Cafe</h2>
       <h3>Products:</h3>
-      <button style={btn} onClick={props.click}>
+      <button ref={btnRef} style={btn} onClick={props.click}>
         Show/Hide Products
       </button>
     </div>
